@@ -9,10 +9,13 @@
         <h1>
             みんなの履修記録
         </h1>
-            <p>筑波大学生が今まで履修した教科を記録して、今後の履修に役立てるサイトです。</p>
-            <p> 今までで0人の履修記録が共有されています。</p>
-            <button type = "button" id = "rec"></button>
-                <!--履修記録アップロード、履修記録閲覧、人気の科目、教科からの検索-->
-        </body>
+        <p>筑波大学生が今まで履修した教科を記録して、今後の履修に役立てるサイトです。</p>
+        <p> 今までで0人の履修記録が共有されています。</p>
+            <form method="POST" action="/upload" enctype="multipart/form-data">
+                <p><label for="file">Twinsの「成績」画面の下側にある「ダウンロード」ボタンを押すと、：</label>
+                    <input type="file" name="file">
+                </p>
+                <button type="submit">アップロード</button>
+            </form>
     </body>
 </html>
