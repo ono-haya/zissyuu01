@@ -7,15 +7,29 @@
 
     <body>
         <h1>
-            みんなの履修記録
+            オススメ履修診断
         </h1>
-        <p>筑波大学生が今まで履修した教科を記録して、今後の履修に役立てるサイトです。</p>
-        <p> 今までで0人の履修記録が共有されています。</p>
             <form method="POST" action="/upload" enctype="multipart/form-data">
-                <p><label for="file">Twinsの「成績」画面の下側にある「ダウンロード」ボタンを押すと、：</label>
+                <label for="file">Twinsの成績ファイルをアップロードしてください：</label><br>
                     <input type="file" name="file">
-                </p>
-                <button type="submit">アップロード</button>
+                
+                
+                <select name="major">
+                    <option value="A">システム</option>
+                    <option value="B">知識</option>
+                    <option value="C">経営</option>
+                </select><br>
+                <button type="submit">アップロードして診断</button>
             </form>
+            <form method="POST" action="/upload" enctype="multipart/form-data">
+                <p><label>アップロードしたデータを削除したい場合、学籍番号を入力して「データの削除」ボタンを押してください：</label><br>
+                    <input type="text" name="student_number">
+                </p>
+                <button type="submit">データの削除</button>
+            </form>
+            
+            <h3>Twinsの成績ダウンロード方法</h3>
+            <p>Twinsの「成績」画面の下側にある「ダウンロード」ボタンを押して「出力形式選択」のページに移動し、ファイル形式は「CSV」文字コードは「日本語(シフトGIS)」を選択して「出力」を押してください。</p>
+            <p>このサイトは学籍番号をハッシュ化して保存します。</p>
     </body>
 </html>
