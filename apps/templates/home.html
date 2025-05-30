@@ -1,35 +1,54 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8" />
-        <title>みんなの履修記録</title>
-    </head>
 
-    <body>
-        <h1>
-            オススメ履修診断
-        </h1>
-            <form method="POST" action="/upload" enctype="multipart/form-data">
-                <label for="file">Twinsの成績ファイルをアップロードしてください：</label><br>
-                    <input type="file" name="file">
-                
-                
-                <select name="major">
-                    <option value="A">システム</option>
-                    <option value="B">知識</option>
-                    <option value="C">経営</option>
-                </select><br>
-                <button type="submit">アップロードして診断</button>
-            </form>
-            <form method="POST" action="/upload" enctype="multipart/form-data">
-                <p><label>アップロードしたデータを削除したい場合、学籍番号を入力して「データの削除」ボタンを押してください：</label><br>
-                    <input type="text" name="student_number">
-                </p>
-                <button type="submit">データの削除</button>
-            </form>
-            
-            <h3>Twinsの成績ダウンロード方法</h3>
-            <p>Twinsの「成績」画面の下側にある「ダウンロード」ボタンを押して「出力形式選択」のページに移動し、ファイル形式は「CSV」文字コードは「日本語(シフトGIS)」を選択して「出力」を押してください。</p>
-            <p>このサイトは学籍番号をハッシュ化して保存します。</p>
-    </body>
+<head>
+    <meta charset="UTF-8" />
+    <title>みんなの履修記録</title>
+    <style>
+        body {
+            background-color: rgb(245, 245, 245);
+            font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+            font-size: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        オススメ履修診断
+    </h1>
+    <p>このサイトは今までの筑波大学生が履修した科目の情報を提供して頂き、そのデータを元にあなたが履修する科目のオススメを提案するものです。</p>
+
+    <form method="POST" action="/result">
+        <label for="file"><b>Twinsの成績ファイル(CSV)をアップロードしてください</b></label><br>
+        <input type="file" name="file"><br><br>
+
+        <label for="major"><b>あなたの専攻を選択してください</b></label><br>
+        <select name="major">
+            <option value="A">システム</option>
+            <option value="B">知識</option>
+            <option value="C">経営</option>
+        </select><br><br>
+        <button type="submit">診断</button>
+    </form>
+    <br>
+    <br>
+    <h4>Twinsの成績ファイル(CSV)ダウンロード方法</h4>
+    <p>Twinsの「成績」画面の下側にある「ダウンロード」ボタンを押して「出力形式選択」のページに移動し、ファイル形式は「CSV」文字コードは「日本語(シフトGIS)」を選択して「出力」を押してください。</p>
+</body>
+
 </html>
