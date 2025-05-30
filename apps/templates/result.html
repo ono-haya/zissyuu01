@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>title</title>
+  <style>
+    body {
+      background-color: rgb(255, 255, 255);
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      font-size: 20px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+    }
+
+    tr {
+      border: none;
+      border-radius: 89px;
+      /* 行を丸くする */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      /* 影をつけて浮かせる */
+      overflow: hidden;
+    }
+
+    table tr:not(:first-child) {
+      animation: fadeInTable 1.5s ease forwards;
+      /* n番目のtrに0.1sずつ遅延をつける */
+      animation-delay: calc(0.15s * (var(--order)));
+    }
+
+    /* 2行目以降に順番の値をセット */
+    table tr:nth-child(2) {
+      --order: 0;
+      color: rgb(197, 170, 14);
+    }
+
+    table tr:nth-child(3) {
+      --order: 1;
+      color: silver;
+    }
+
+    table tr:nth-child(4) {
+      --order: 2;
+      color: brown;
+    }
+
+    table tr:nth-child(5) {
+      --order: 3;
+    }
+
+    table tr:nth-child(6) {
+      --order: 4;
+    }
+
+    table tr:nth-child(7) {
+      --order: 5;
+    }
+
+    table tr:nth-child(8) {
+      --order: 6;
+    }
+
+    table tr:nth-child(9) {
+      --order: 7;
+    }
+
+    table tr:nth-child(10) {
+      --order: 8;
+    }
+
+    table tr:nth-child(11) {
+      --order: 9;
+    }
+
+    table tr:nth-child(12) {
+      --order: 10;
+    }
+
+    table tr:nth-child(13) {
+      --order: 11;
+    }
+
+    table tr:nth-child(14) {
+      --order: 12;
+    }
+
+    table tr:nth-child(15) {
+      --order: 13;
+    }
+
+    table tr:nth-child(16) {
+      --order: 14;
+    }
+
+    table tr:nth-child(17) {
+      --order: 15;
+    }
+
+    table tr:nth-child(18) {
+      --order: 16;
+    }
+
+    table tr:nth-child(19) {
+      --order: 17;
+    }
+
+    table tr:nth-child(20) {
+      --order: 18;
+    }
+
+    table tr:nth-child(21) {
+      --order: 19;
+    }
+
+    @keyframes fadeInTable {
+      from {
+        opacity: .3;
+        transform: translateX(100px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h2>診断結果(仮)</h2>
+  <table>
+    <tr>
+      <th>順位</th>
+      <th>科目名</th>
+      <th>科目名</th>
+      <th>科目名</th>
+      <th>科目名</th>
+      <th>科目名</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>知識情報システム実習A</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+    <tr>
+      <td>de</td>
+      <td>degg</td>
+    </tr>
+
+  </table>
+</body>
+
+</html>
