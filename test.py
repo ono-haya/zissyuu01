@@ -4,11 +4,11 @@ import pandas as pd
 data_path = "./data"
 
 df = pd.read_csv(os.path.join(data_path,"SIRS202312990 (4).csv"))
-
+class_information = pd.read_csv(os.path.join(data_path,"filtered_ge_courses.csv"))
 # hh = pd.read_csv(os.path.join(data_path,"kdb_2025--ja (1).csv"))
 
 df_transposed = df.T
-
+class_info_t = class_information.T
 big_file = []
 
 for i in df_transposed:
