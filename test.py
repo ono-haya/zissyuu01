@@ -3,12 +3,12 @@ import pandas as pd
 
 data_path = "./data"
 
-df = pd.read_csv(os.path.join(data_path,"SIRS202312990 (4).csv"))
+df = pd.read_csv(os.path.join(data_path,"filtered_202310778_courses.csv"))
 class_information = pd.read_csv(os.path.join(data_path,"filtered_ge_courses.csv"))
 # hh = pd.read_csv(os.path.join(data_path,"kdb_2025--ja (1).csv"))
+df.columns = df.columns.str.strip()
 
-df_transposed = df.T
-class_info_t = class_information.T
+
 big_file = []
 
 for i in df_transposed:
@@ -16,10 +16,4 @@ for i in df_transposed:
     for j in df_transposed[i]:
         big_file[i].append(j)
 
-x = []
-
-for i in big_file:
-    if i[7] == "履修中":
-        x.append(i[3])
-
-print(x)
+print(big_file)
