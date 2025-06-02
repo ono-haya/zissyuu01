@@ -23,23 +23,22 @@ def get_result():
     #専攻の情報をセッションに保存
     session["major"] = major
     #処理を行う
+    #マッチングの結果を保存する（不足単位の結果、教科の結果）
+    session["currentstate"] 
+
+    #session["makegame"]
     #処理の結果をセッションに保存
-    
+    #結果のビジュアルを呼び出す
     return show_result()
 
 #キャッシュ内にあるデータを取得して結果画面を表示する
 @app.route("/result/<int:current_page>")
-def show_result(current_page = 1):
+def show_result():
     #この数字はサンプル
     total = 84
     
-    total_pages = (total + per_page - 1) // per_page
-    index_start = (current_page - 1) * per_page
-    index_end = index_start + per_page
-    return render_template("result.html",
-                           current_page=current_page,
-                           total_pages=total_pages,
-                           total=total)
+    
+    return render_template("result.html",major = session["major"], currentstatus = session["currentstate"] )
 
 #引数のCSVをデータ処理部分に送る
 

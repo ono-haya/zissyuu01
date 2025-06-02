@@ -142,9 +142,9 @@
       <th>順位</th>
       <th>科目番号</th>
       <th>科目名</th>
-      <th>科目名</th>
-      <th>科目名</th>
-      <th>科目名</th>
+      <th>学期</th>
+      <th>時限</th>
+      <th>適合度</th>
     </tr>
     <!-- 以下の繰り返しは{{ result|safe }}のresult変数にタグごと格納して処理する -->
     <tr>
@@ -218,16 +218,8 @@
     </tr>
 
   </table>
+  {{major}}
 </body>
-<div style="text-align:center; margin: 20px 0;">
-  {% if current_page > 1 %}
-  <a href="{{ url_for('show_result', current_page=current_page-1) }}">前へ</a>
-  {% endif %}
-  <span> {{ current_page }} / {{ total_pages }} </span>
-  {% if current_page < total_pages %} <a href="{{ url_for('show_result', current_page=current_page+1) }}">次へ</a>
-    {% endif %}
-</div>
-
 <form action="{{ url_for('main', initialize = false) }}">
   <button type="submit">ホームに戻る</button>
 </form>
