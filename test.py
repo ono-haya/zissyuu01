@@ -3,10 +3,18 @@ import pandas as pd
 
 data_path = "./data"
 
-<<<<<<< HEAD
-df = pd.read_csv(os.path.join(data_path,"SIR202312990 (4).csv"))
 
-print(df)
-=======
-df = pd.read_csv(os.path.join(data_path,"SIRS202312990 (4).csv"))
->>>>>>> 13026d1b12bfd473d2cdcbd02b74681471e07580
+df = pd.read_csv(os.path.join(data_path,"filtered_202310778_courses.csv"))
+class_information = pd.read_csv(os.path.join(data_path,"filtered_ge_courses.csv"))
+# hh = pd.read_csv(os.path.join(data_path,"kdb_2025--ja (1).csv"))
+df.columns = df.columns.str.strip()
+
+
+big_file = []
+
+for i in df_transposed:
+    big_file.append([])
+    for j in df_transposed[i]:
+        big_file[i].append(j)
+
+print(big_file)
