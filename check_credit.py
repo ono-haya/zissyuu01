@@ -23,7 +23,7 @@ if major not in required_major:
     print("対応していない専攻名です。プログラムを終了します。")
 else:
     if major=="システム主専攻":
-        ge7_df = df[df['科目番号'].str.startswith('GE7')]
+        ge7_df = df[df['科目番号'].str.startswith('GE7')&~df['科目番号'].isin(['GE70113','GE70123'])]
         geothers_df = df[df['科目番号'].str.startswith(('GE4','GE6','GE8'))]
 
         ge7_df_sum = ge7_df['単位数'].sum()
@@ -41,7 +41,7 @@ else:
             lack_credit7 = 16-ge7_df_sum
             print(f'自分の専攻の専門科目が{lack_credit7}単位足りてないよ')
     elif major=="知識科学主専攻":
-        ge6_df = df[df['科目番号'].str.startswith('GE6')]
+        ge6_df = df[df['科目番号'].str.startswith('GE6')&~df['科目番号'].isin(['GE60113','GE60123'])]
         geothers_df = df[df['科目番号'].str.startswith(('GE4','GE7','GE8'))]
 
         ge6_df_sum = ge6_df['単位数'].sum()
@@ -59,7 +59,7 @@ else:
             lack_credit6 = 16-ge6_df_sum
             print(f'自分の専攻の専門科目が{lack_credit6}単位足りてないよ')
     else :
-        ge8_df = df[df['科目番号'].str.startswith('GE8')]
+        ge8_df = df[df['科目番号'].str.startswith('GE8')&~df['科目番号'].isin(['GE80113','GE80123'])]
         geothers_df = df[df['科目番号'].str.startswith(('GE4','GE6','GE7'))]
 
         ge8_df_sum = ge8_df['単位数'].sum()
