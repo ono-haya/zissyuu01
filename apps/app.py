@@ -29,7 +29,7 @@ def get_result():
     #マッチングの結果を保存する（不足単位の結果、教科の結果）
     session["currentstate"] = get_credit(file, major)
 
-    #session["makegame"]
+
     #処理の結果をセッションに保存
     #結果のビジュアルを呼び出す
     return show_result()
