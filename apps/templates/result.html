@@ -137,6 +137,27 @@
 
 <body>
   <h2>診断結果(仮)</h2>
+  <h3>あなたの専攻:{{major}}</h3>
+  <table>
+
+    <p>現在のあなたの状況</p>
+    <tr>
+      <th>必要</th>
+      <th>現在</th>
+    </tr>
+    <tr>
+      <td>{{専攻内の専門科目}}</td>
+      <td>{{currentstate.target}}</td>
+      <td>{{currentstate.main_sum}}</td>
+
+    </tr>
+    <tr>
+      <td>{{専攻外の専門科目}}</td>
+      <td>{{currentstate.other_target}}</td>
+      <td>{{currentstate.other_sum}}</td>
+    </tr>
+
+  </table>
   <table>
     <tr>
       <th>順位</th>
@@ -218,7 +239,7 @@
     </tr>
 
   </table>
-  {{major}}
+  {{major}}{{ result|safe}}
 </body>
 <form action="{{ url_for('main', initialize = false) }}">
   <button type="submit">ホームに戻る</button>

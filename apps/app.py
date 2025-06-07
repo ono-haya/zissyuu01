@@ -1,6 +1,7 @@
 from flask import Flask, session, render_template, request
 import csv
 from flask_session import Session
+from apps.check_credit_copy import get_credit
 
 app = Flask(__name__)
 
@@ -19,12 +20,14 @@ def main(initialize = True):
 def get_result():
     #フォームの情報(ファイル、専攻)を取得
     file = request.files.get("file")
+    if file is None or file.filename == "":
+        return "ファイルが選択されていません", 400
     major = request.form.get("major")
     #専攻の情報をセッションに保存
     session["major"] = major
     #処理を行う
     #マッチングの結果を保存する（不足単位の結果、教科の結果）
-    session["currentstate"] 
+    session["currentstate"] = get_credit(file, major)
 
     #session["makegame"]
     #処理の結果をセッションに保存
@@ -36,9 +39,9 @@ def get_result():
 def show_result():
     #この数字はサンプル
     total = 84
+    print("セッションの中身", session["currentstate"])
     
-    
-    return render_template("result.html",major = session["major"], currentstatus = session["currentstate"] )
+    return render_template("result.html",major = session["major"], currentstate = session["currentstate"] )
 
 #引数のCSVをデータ処理部分に送る
 
