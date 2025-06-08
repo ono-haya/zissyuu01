@@ -138,104 +138,26 @@
 
     <p>現在のあなたの状況</p>
     <tr>
+      <th></th>
       <th>必要</th>
       <th>現在</th>
     </tr>
     <tr>
-      <td>{{専攻内の専門科目}}</td>
+      <td>専攻内の専門科目</td>
       <td>{{currentstate.target}}</td>
       <td>{{currentstate.main_sum}}</td>
 
     </tr>
     <tr>
-      <td>{{専攻外の専門科目}}</td>
+      <td>専攻外の専門科目</td>
       <td>{{currentstate.other_target}}</td>
       <td>{{currentstate.other_sum}}</td>
     </tr>
 
   </table>
   <table>
-    <tr>
-      <th>順位</th>
-      <th>科目番号</th>
-      <th>科目名</th>
-      <th>学期</th>
-      <th>時限</th>
-      <th>適合度</th>
-    </tr>
-    <!-- 以下の繰り返しは{{ result|safe }}のresult変数にタグごと格納して処理する -->
-    <tr>
-      <td>1</td>
-      <td>GE7sample</td>
-      <td>知識情報システム実習A</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-
+    {{ matchresult|safe }}
   </table>
-  {{major}}{{ result|safe}}
 </body>
 <form action="{{ url_for('main', initialize = false) }}">
   <button type="submit">ホームに戻る</button>
