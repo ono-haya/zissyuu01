@@ -21,14 +21,17 @@ def main(initialize = True):
 def get_result():
     #フォームの情報(ファイル、専攻)を取得
     file = request.files.get("file")
-    if file is None or file.filename == "":
-        return "ファイルが選択されていません", 400
     major = request.form.get("major")
     #専攻の情報をセッションに保存
     session["major"] = major
     #処理を行う
+
+    credits = get_credit(file, major)
     #マッチングの結果を保存する（不足単位の結果、教科の結果）
-    session["currentstate"] = get_credit(file, major)
+    session["currentstate"] = credits[0]
+    session["main_prefix"] = credits[1]
+    session["other_prefix"] = credits[2]
+
     session["matchresult"] = [
         ["順位", "科目番号", "科目名", "学期", "時限", "適合度"],  # ←スキーマ行
         ["1", "GE70101", "知識情報システム実習A", "春", "1", "90"],
@@ -51,11 +54,16 @@ def show_result():
         else:
             resultHTML += "<tr>" + "".join(f"<td>{attr}</td>" for attr in resutList[i]) + "</tr>"
     
+    #専攻内、専攻外の科目番号のプレフィックスを取得し、HTML対応の文字列に変換する
+    main_prefix = session["main_prefix"]
+    other_prefix = ",".join(f"{p}" for p in session["other_prefix"]) 
+     
+
     #返ってきた結果を表示できる状態にする
     for i in range(per_page):
         continue
     
-    return render_template("result.html",major = session["major"], currentstate = session["currentstate"], matchresult = resultHTML)
+    return render_template("result.html",major = session["major"], currentstate = session["currentstate"], matchresult = resultHTML, mainPrefix = main_prefix, otherPrefix = other_prefix)
 
 #引数のCSVをデータ処理部分に送る
 

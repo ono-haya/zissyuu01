@@ -27,7 +27,9 @@
 
     table {
       border-spacing: 10px;
+      margin-bottom: 30px;
     }
+
 
     table tr:not(:first-child) {
       opacity: 0;
@@ -135,27 +137,27 @@
   <h2>診断結果(仮)</h2>
   <h3>あなたの専攻:{{major}}</h3>
   <table>
-
-    <p>現在のあなたの状況</p>
+    <label>現在のあなたの状況</label>
     <tr>
-      <th></th>
+      <th>科目</th>
       <th>必要</th>
       <th>現在</th>
     </tr>
     <tr>
-      <td>専攻内の専門科目</td>
+      <td>専攻内の専門科目({{mainPrefix}})</td>
       <td>{{currentstate.target}}</td>
       <td>{{currentstate.main_sum}}</td>
 
     </tr>
     <tr>
-      <td>専攻外の専門科目</td>
+      <td>専攻外の専門科目({{otherPrefix}})</td>
       <td>{{currentstate.other_target}}</td>
       <td>{{currentstate.other_sum}}</td>
     </tr>
 
   </table>
   <table>
+    <label>オススメ科目ランキング</label>
     {{ matchresult|safe }}
   </table>
 </body>
