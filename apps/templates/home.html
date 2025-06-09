@@ -24,6 +24,24 @@
             text-align: center;
             margin-top: 20px;
         }
+
+        input[type="file"] {
+            display: block;
+            margin: 0 auto;
+        }
+
+        select {
+            display: block;
+            margin: 10px auto;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -33,12 +51,11 @@
     </h1>
     <p>このサイトは今までの筑波大学生が履修した科目の情報を提供して頂き、そのデータを元にあなたが履修する科目のオススメを提案するものです。</p>
 
-    <form method="POST" action="/result">
+    <form method="POST" action="/result" enctype="multipart/form-data">
         <label for="file"><b>Twinsの成績ファイル(CSV)をアップロードしてください</b></label><br>
-        <input type="file" name="file"><br><br>
-
+        <input type="file" name="file" required><br><br>
         <label for="major"><b>あなたの専攻を選択してください</b></label><br>
-        <select name="major" style="width: 200px; height: 40px" font-size = "60px" class="">
+        <select name="major" style="width: 200px; height: 40px" font-size="60px" class="">
             <option value="システム主専攻">システム主専攻</option>
             <option value="知識科学主専攻">知識科学主専攻</option>
             <option value="情報資源経営主専攻">情報資源経営主専攻</option>

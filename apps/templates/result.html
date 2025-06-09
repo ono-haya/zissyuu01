@@ -27,7 +27,9 @@
 
     table {
       border-spacing: 10px;
+      margin-bottom: 30px;
     }
+
 
     table tr:not(:first-child) {
       opacity: 0;
@@ -39,18 +41,14 @@
     /* 2行目以降に順番の値をセット */
     table tr:nth-child(2) {
       --order: 0;
-      /* 色をここに書くと２１位もこの色になってしまうのでappのほうに書く */
-      color: rgb(197, 170, 14);
     }
 
     table tr:nth-child(3) {
       --order: 1;
-      color: silver;
     }
 
     table tr:nth-child(4) {
       --order: 2;
-      color: brown;
     }
 
     table tr:nth-child(5) {
@@ -137,88 +135,31 @@
 
 <body>
   <h2>診断結果(仮)</h2>
+  <h3>あなたの専攻:{{major}}</h3>
   <table>
+    <label>現在のあなたの状況</label>
     <tr>
-      <th>順位</th>
-      <th>科目番号</th>
-      <th>科目名</th>
-      <th>学期</th>
-      <th>時限</th>
-      <th>適合度</th>
-    </tr>
-    <!-- 以下の繰り返しは{{ result|safe }}のresult変数にタグごと格納して処理する -->
-    <tr>
-      <td>1</td>
-      <td>GE7sample</td>
-      <td>知識情報システム実習A</td>
+      <th>科目</th>
+      <th>必要</th>
+      <th>現在</th>
     </tr>
     <tr>
-      <td>de</td>
-      <td>degg</td>
+      <td>専攻内の専門科目({{mainPrefix}})</td>
+      <td>{{currentstate.target}}</td>
+      <td>{{currentstate.main_sum}}</td>
+
     </tr>
     <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
-    </tr>
-    <tr>
-      <td>de</td>
-      <td>degg</td>
+      <td>専攻外の専門科目({{otherPrefix}})</td>
+      <td>{{currentstate.other_target}}</td>
+      <td>{{currentstate.other_sum}}</td>
     </tr>
 
   </table>
-  {{major}}
+  <table>
+    <label>オススメ科目ランキング</label>
+    {{ matchresult|safe }}
+  </table>
 </body>
 <form action="{{ url_for('main', initialize = false) }}">
   <button type="submit">ホームに戻る</button>

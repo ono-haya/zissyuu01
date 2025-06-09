@@ -12,7 +12,7 @@ else:
     try:
 
 # 「科目番号」列が GE4, GE6, GE7, GE8 で始まる行だけ抽出かつ科目番号、科目名、単位数だけ抽出
-        filtered_df = df[df["科目番号"].astype(str).str.startswith(("GE4", "GE6", "GE7", "GE8"))]
+        filtered_df = df[df["科目番号"].astype(str).str.startswith(("GE4", "GE6", "GE7", "GE8","GA4"))]
      
 
         simple_df = filtered_df[["科目番号","科目名 ","単位数"]]
