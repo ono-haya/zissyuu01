@@ -5,7 +5,7 @@ def get_credit(file, _major):
     df = pd.read_csv(file, encoding='cp932')
     df.columns = df.columns.str.strip()
     major = _major
-
+    
     # 除外科目の辞書
     exclude_codes = {
         "システム主専攻": ['GE70113', 'GE70123'],

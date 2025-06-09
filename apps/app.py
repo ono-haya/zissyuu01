@@ -2,6 +2,9 @@ from flask import Flask, session, render_template, request
 import csv
 from flask_session import Session
 from apps.check_credit_copy import get_credit
+from apps.classinfomanager import get_classinfo
+from apps.suisen import get_suisen
+import io
 
 
 app = Flask(__name__)
@@ -24,20 +27,18 @@ def get_result():
     major = request.form.get("major")
     #専攻の情報をセッションに保存
     session["major"] = major
-    #処理を行う
 
-    credits = get_credit(file, major)
+
+    credits =  get_credit(file, major)
+    file.stream.seek(0)
+    ranking = get_suisen(file, major)
+
     #マッチングの結果を保存する（不足単位の結果、教科の結果）
     session["currentstate"] = credits[0]
     session["main_prefix"] = credits[1]
     session["other_prefix"] = credits[2]
+    session["matchresult"] = get_classinfo(ranking)
 
-    session["matchresult"] = [
-        ["順位", "科目番号", "科目名", "学期", "時限", "適合度"],  # ←スキーマ行
-        ["1", "GE70101", "知識情報システム実習A", "春", "1", "90"],
-        ["2", "GE70102", "知識情報システム実習B", "秋", "2", "85"],
-        ["3", "GE70103", "知識情報システム実習C", "春", "3", "80"]
-    ]
     #処理の結果をセッションに保存
     #結果のビジュアルを呼び出す
     return show_result()
@@ -46,13 +47,15 @@ def get_result():
 @app.route("/result/<int:current_page>")
 def show_result():
     print("セッションの中身", session["currentstate"])
-    resutList = session["matchresult"]
+    resutLists = session["matchresult"]
     resultHTML = ""
-    for i in range(len(resutList)):
-        if i == 0:
-            resultHTML += "<tr>" + "".join(f"<th>{attr}</th>" for attr in resutList[i]) + "</tr>"
-        else:
-            resultHTML += "<tr>" + "".join(f"<td>{attr}</td>" for attr in resutList[i]) + "</tr>"
+    for list in resutLists:
+        #HTML要素に変換する(最初の要素はラベル)
+        for i in range(len(list)):
+            if i == 0:
+                resultHTML += "<tr>" + "".join(f"<th>{attr}</th>" for attr in resutLists[i]) + "</tr>"
+            else:
+                resultHTML += "<tr>" + "".join(f"<td>{attr}</td>" for attr in resutLists[i]) + "</tr>"
     
     #専攻内、専攻外の科目番号のプレフィックスを取得し、HTML対応の文字列に変換する
     main_prefix = session["main_prefix"]
@@ -65,6 +68,3 @@ def show_result():
     
     return render_template("result.html",major = session["major"], currentstate = session["currentstate"], matchresult = resultHTML, mainPrefix = main_prefix, otherPrefix = other_prefix)
 
-#引数のCSVをデータ処理部分に送る
-
-#帰ってきた配列を用いて結果の表示をする
