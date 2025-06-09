@@ -3,7 +3,7 @@ import pandas as pd
 
 try: 
 # CSVファイルを読み込み
-    df = pd.read_csv(r"../data/SIRS202310778 (2).csv", encoding="utf-8-sig")
+    df = pd.read_csv(r"../all-data/kdb_2025--ja.csv", encoding="utf-8-sig")
 except FileNotFoundError:
     print("ファイルが見つかりません")
 except Exception as e:
@@ -15,8 +15,8 @@ else:
         filtered_df = df[df["科目番号"].astype(str).str.startswith(("GE4", "GE6", "GE7", "GE8","GA4"))]
      
 
-        simple_df = filtered_df[["科目番号","科目名 ","単位数"]]
+        simple_df = filtered_df[["科目番号","科目名","単位数","実施学期","曜時限"]]
 # 結果を新しいCSVとして保存
-        simple_df.to_csv("filtered_202310778_courses.csv", index=False, encoding="cp932")
+        simple_df.to_csv("filtered_ge_courses.csv", index=False, encoding="cp932")
     except Exception as e:
         print(f"データ処理中にエラーが発生しました:{e}")
