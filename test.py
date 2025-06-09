@@ -1,20 +1,47 @@
 import os
 import pandas as pd
 
-data_path = "./data"
+tenchi_system = [
+    [['GE40201'], [0, 1, 2, 3]],
+    [['GE40301'], [0, 1, 2, 3, 4]],
+    [['GE40401'], [0, 1, 2, 3, 4]],
+    [['GE40501'], [2, 3]],
+    [['GE40603'], [0, 1, 2, 3, 4]],
+    [['GE40703'], [0]],
+    [['GE60201'], [0, 1, 2, 3, 4]],
+    [['GE60501'], [2]],
+    [['GE60601'], [0, 1, 2, 3]],
+    [['GE60801'], [4]],
+    [['GE61101'], [0, 1, 2, 3]],
+    [['GE62201'], [1]],
+    [['GE62601'], [3]],
+    [['GE62701'], [2]],
+    [['GE70401'], [0]],
+    [['GE70501'], [3, 4]],
+    [['GE70601'], [3, 4]],
+    [['GE70701'], [3]],
+    [['GE70801'], [3]],
+    [['GE72601'], [3]],
+    [['GE73201'], [0]],
+    [['GE80301'], [0, 1, 2, 4]],
+    [['GE80501'], [0, 1, 2, 3, 4]],
+    [['GE80801'], [0, 1, 2, 4]],
+    [['GE80901'], [0, 1, 2, 3, 4]],
+    [['GE81101'], [0, 1, 2, 3]],
+    [['GE81201'], [0, 1, 2, 3, 4]],
+    [['GE81301'], [1, 2, 3, 4]],
+    [['GE81401'], [1, 3, 4]],
+    [['GE82601'], [0, 1, 2, 4]],
+    [['GE82802'], [0, 1]],
+    [['GE82901'], [0, 1, 2, 4]],
+    [['GE83001'], [1, 4]]
+]
 
-
-df = pd.read_csv(os.path.join(data_path,"filtered_202310778_courses.csv"))
-class_information = pd.read_csv(os.path.join(data_path,"filtered_ge_courses.csv"))
-# hh = pd.read_csv(os.path.join(data_path,"kdb_2025--ja (1).csv"))
+data_path2 = "./all-data"
+file_path2 = os.path.join(data_path2,"filtered_202310778_courses.csv")
+df = pd.read_csv(file_path2, encoding='cp932')
 df.columns = df.columns.str.strip()
+yy = df["科目番号"].astype(str).tolist()
 
-
-big_file = []
-
-for i in df_transposed:
-    big_file.append([])
-    for j in df_transposed[i]:
-        big_file[i].append(j)
-
-print(big_file)
+for i in tenchi_system:
+    print(i[1])

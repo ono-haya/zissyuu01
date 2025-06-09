@@ -78,7 +78,7 @@ for samp in system_sample_data:  # 各サンプルについて処理する
             count += 1  # カウントを1増やす
 
     total = len(samp)  # サンプル内の総クラス数
-    rate = count / total  # 履修率（= 該当数 / 総数）を計算
+    rate = count / total  # 履修一致率（= 該当数 / 総数）を計算
     gacchi.append(rate)  # 結果リストに履修率を追加
 
 # 未履修科目に対して推薦度計算
