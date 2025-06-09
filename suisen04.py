@@ -91,13 +91,28 @@ for i in tenchi_system:
 
 # 推薦度でソート
 sorted_data = sorted(pro, key=lambda x: x[1], reverse=True)
-match_result = sorted_data[:3]
-# 結果出力
 
-for item in match_result:
+# 推薦度でソート済み sorted_data から分割
+ge7_list = [item for item in sorted_data if item[0][0].startswith("GE7")]
+others_list = [item for item in sorted_data if not item[0][0].startswith("GE7")]
+
+# それぞれ上位3件取得
+top3_ge7 = ge7_list[:3]
+top3_others = others_list[:3]
+
+print("=== GE7で始まる科目 上位3件 ===")
+for item in top3_ge7:
     subject = item[0][0]
     score = item[1]
-    score_int = int(score*100)
+    score_int = int(score * 100)
     print(f"[{subject}, {score_int}]")
+
+print("\n=== それ以外の科目 上位3件 ===")
+for item in top3_others:
+    subject = item[0][0]
+    score = item[1]
+    score_int = int(score * 100)
+    print(f"[{subject}, {score_int}]")
+
 
     
