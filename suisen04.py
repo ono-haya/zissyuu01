@@ -100,19 +100,22 @@ others_list = [item for item in sorted_data if not item[0][0].startswith("GE7")]
 top3_ge7 = ge7_list[:3]
 top3_others = others_list[:3]
 
-print("=== GE7で始まる科目 上位3件 ===")
+match_result=[]
 for item in top3_ge7:
+    match_result1=[]
     subject = item[0][0]
     score = item[1]
     score_int = int(score * 100)
-    print(f"[{subject}, {score_int}]")
-
-print("\n=== それ以外の科目 上位3件 ===")
+    match_result1.append([subject, score_int])
+    match_result.append(match_result1)
 for item in top3_others:
+    match_result2=[]
     subject = item[0][0]
     score = item[1]
     score_int = int(score * 100)
-    print(f"[{subject}, {score_int}]")
+    match_result2.append([subject,score_int])
+    match_result.append(match_result2)
+print(match_result)
 
 
     
