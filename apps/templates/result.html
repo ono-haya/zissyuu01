@@ -55,69 +55,7 @@
       --order: 3;
     }
 
-    table tr:nth-child(6) {
-      --order: 4;
-    }
 
-    table tr:nth-child(7) {
-      --order: 5;
-    }
-
-    table tr:nth-child(8) {
-      --order: 6;
-    }
-
-    table tr:nth-child(9) {
-      --order: 7;
-    }
-
-    table tr:nth-child(10) {
-      --order: 8;
-    }
-
-    table tr:nth-child(11) {
-      --order: 9;
-    }
-
-    table tr:nth-child(12) {
-      --order: 10;
-    }
-
-    table tr:nth-child(13) {
-      --order: 11;
-    }
-
-    table tr:nth-child(14) {
-      --order: 12;
-    }
-
-    table tr:nth-child(15) {
-      --order: 13;
-    }
-
-    table tr:nth-child(16) {
-      --order: 14;
-    }
-
-    table tr:nth-child(17) {
-      --order: 15;
-    }
-
-    table tr:nth-child(18) {
-      --order: 16;
-    }
-
-    table tr:nth-child(19) {
-      --order: 17;
-    }
-
-    table tr:nth-child(20) {
-      --order: 18;
-    }
-
-    table tr:nth-child(21) {
-      --order: 19;
-    }
 
     @keyframes fadeInTable {
       from {
@@ -157,8 +95,6 @@
   </table>
   {{ matchresult|safe }}
 </body>
-<form action="{{ url_for('main', initialize = false) }}">
-  <button type="submit">ホームに戻る</button>
-</form>
+<button onclick="window.history.back();">戻る</button>
 
 </html>
