@@ -13,8 +13,8 @@ app.config["SESSION_TYPE"] = "filesystem"
 #apps直下にflask_sessionが自動的に作成され、保存される
 Session(app)
 
-#ページごとの要素数は20とする
-per_page = 20
+element_amount = 3
+
 
 @app.route("/")
 def main(initialize = True):    
@@ -50,12 +50,14 @@ def show_result():
     resutLists = session["matchresult"]
     resultHTML = ""
     for list in resutLists:
+        resultHTML +="<table>"
         #HTML要素に変換する(最初の要素はラベル)
-        for i in range(len(list)):
+        for i in range(element_amount+1):
             if i == 0:
-                resultHTML += "<tr>" + "".join(f"<th>{attr}</th>" for attr in resutLists[i]) + "</tr>"
+                resultHTML += "<tr>" + "".join(f"<th>{attr}</th>" for attr in list[i]) + "</tr>"
             else:
-                resultHTML += "<tr>" + "".join(f"<td>{attr}</td>" for attr in resutLists[i]) + "</tr>"
+                resultHTML += "<tr>" + "".join(f"<td>{attr}</td>" for attr in list[i]) + "</tr>"
+        resultHTML += "</table>"
     
     #専攻内、専攻外の科目番号のプレフィックスを取得し、HTML対応の文字列に変換する
     main_prefix = session["main_prefix"]
@@ -63,7 +65,7 @@ def show_result():
      
 
     #返ってきた結果を表示できる状態にする
-    for i in range(per_page):
+    for i in range(element_amount):
         continue
     
     return render_template("result.html",major = session["major"], currentstate = session["currentstate"], matchresult = resultHTML, mainPrefix = main_prefix, otherPrefix = other_prefix)

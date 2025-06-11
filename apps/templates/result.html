@@ -154,12 +154,8 @@
       <td>{{currentstate.other_target}}</td>
       <td>{{currentstate.other_sum}}</td>
     </tr>
-
   </table>
-  <table>
-    <label>オススメ科目ランキング</label>
-    {{ matchresult|safe }}
-  </table>
+  {{ matchresult|safe }}
 </body>
 <form action="{{ url_for('main', initialize = false) }}">
   <button type="submit">ホームに戻る</button>
