@@ -49,7 +49,13 @@ def show_result():
     print("セッションの中身", session["currentstate"])
     resutLists = session["matchresult"]
     resultHTML = ""
+    index = 0
     for list in resutLists:
+        if index == 0:
+            resultHTML += "<label>専攻内の専門科目のおすすめ</label>"
+            index += 1
+        else:
+            resultHTML += f"<label>専攻外の専門科目のおすすめ</label>"
         resultHTML +="<table>"
         #HTML要素に変換する(最初の要素はラベル)
         for i in range(element_amount+1):

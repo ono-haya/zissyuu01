@@ -3,7 +3,11 @@ def get_credit(file, _major):
     import pandas as pd
 
     df = pd.read_csv(file, encoding='cp932')
+
+
     df.columns = df.columns.str.strip()
+
+
     major = _major
     
     # 除外科目の辞書
