@@ -2,10 +2,11 @@ def get_credit(file, _major):
     import os
     import pandas as pd
 
+        
     df = pd.read_csv(file, encoding='cp932')
 
-
     df.columns = df.columns.str.strip()
+    print("dfのカラム", df.columns)
 
 
     major = _major
@@ -37,8 +38,8 @@ def get_credit(file, _major):
     }
 
     if major in main_prefix:
-        ge_main = df[df['科目番号'].str.startswith(main_prefix[major]) & ~df['科目番号'].isin(exclude_codes[major])]
-        ge_others = df[df['科目番号'].str.startswith(other_prefix[major])]
+        ge_main = df[df['科目番号'].str.startswith(main_prefix[major], na=False) & ~df['科目番号'].isin(exclude_codes[major])]
+        ge_others = df[df['科目番号'].str.startswith(other_prefix[major], na=False)]
         result_state["target"] = 16
         result_state["main_sum"] = int(ge_main['単位数'].sum())
         result_state["other_target"] = 8
