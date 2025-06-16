@@ -3,98 +3,136 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>診断結果</title>
   <style>
     body {
-      background-color: rgb(245, 245, 245);
-      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-      font-size: 20px;
+      background-color: #f0f4f8;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      margin: 0;
+      padding: 0;
+      color: #333;
     }
 
-    th,
-    td {
-      padding: 10px;
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    tr {
-      border: none;
-      border-radius: 89px;
-      /* 行を丸くする */
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      /* 影をつけて浮かせる */
-      overflow: hidden;
+    h2 {
+      color: #004080;
+      text-align: center;
+    }
+
+    h3 {
+      text-align: center;
+      color: #333;
+      margin-top: 10px;
     }
 
     table {
-      border-spacing: 10px;
-      margin-bottom: 30px;
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 12px;
+      margin-top: 30px;
     }
 
+    th, td {
+      text-align: center;
+      padding: 12px;
+      background-color: #eef5ff;
+      border-radius: 8px;
+    }
 
-    table tr:not(:first-child) {
+    th {
+      background-color: #cce0ff;
+      font-weight: bold;
+    }
+
+    tr {
+      animation: fadeInTable 1.2s ease forwards;
       opacity: 0;
-      animation: fadeInTable 1.5s ease forwards;
-      /* n番目のtrに0.1sずつ遅延をつける */
-      animation-delay: calc(0.15s * (var(--order)));
     }
 
-    /* 2行目以降に順番の値をセット */
-    table tr:nth-child(2) {
-      --order: 0;
-    }
-
-    table tr:nth-child(3) {
-      --order: 1;
-    }
-
-    table tr:nth-child(4) {
-      --order: 2;
-    }
-
-    table tr:nth-child(5) {
-      --order: 3;
-    }
-
-
+    tr:nth-child(2) { animation-delay: 0.15s; }
+    tr:nth-child(3) { animation-delay: 0.3s; }
+    tr:nth-child(4) { animation-delay: 0.45s; }
 
     @keyframes fadeInTable {
       from {
-        opacity: .3;
-        transform: translateX(200px);
+        opacity: 0;
+        transform: translateX(40px);
       }
-
       to {
         opacity: 1;
         transform: translateX(0);
       }
     }
+
+    .label {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 30px;
+    }
+
+    .matchresult {
+      margin-top: 40px;
+    }
+
+    .back-button {
+      display: block;
+      margin: 40px auto 0;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #005f99;
+    }
   </style>
 </head>
 
 <body>
-  <h2>診断結果(仮)</h2>
-  <h3>あなたの専攻:{{major}}</h3>
-  <table>
-    <label>現在のあなたの状況</label>
-    <tr>
-      <th>科目</th>
-      <th>必要</th>
-      <th>現在</th>
-    </tr>
-    <tr>
-      <td>専攻内の専門科目({{mainPrefix}})</td>
-      <td>{{currentstate.target}}</td>
-      <td>{{currentstate.main_sum}}</td>
+  <div class="container">
+    <h2>診断結果</h2>
+    <h3>あなたの専攻：{{ major }}</h3>
 
-    </tr>
-    <tr>
-      <td>専攻外の専門科目({{otherPrefix}})</td>
-      <td>{{currentstate.other_target}}</td>
-      <td>{{currentstate.other_sum}}</td>
-    </tr>
-  </table>
-  {{ matchresult|safe }}
+    <div class="label">現在のあなたの状況</div>
+    <table>
+      <tr>
+        <th>科目</th>
+        <th>必要</th>
+        <th>現在</th>
+      </tr>
+      <tr>
+        <td>専攻内の専門科目（{{ mainPrefix }}）</td>
+        <td>{{ currentstate.target }}</td>
+        <td>{{ currentstate.main_sum }}</td>
+      </tr>
+      <tr>
+        <td>専攻外の専門科目（{{ otherPrefix }}）</td>
+        <td>{{ currentstate.other_target }}</td>
+        <td>{{ currentstate.other_sum }}</td>
+      </tr>
+    </table>
+
+    <div class="matchresult">
+      {{ matchresult|safe }}
+    </div>
+
+    <button class="back-button" onclick="window.history.back();">← 戻る</button>
+  </div>
 </body>
-<button onclick="window.history.back();">戻る</button>
 
 </html>
